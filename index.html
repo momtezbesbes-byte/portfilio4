@@ -1,0 +1,1029 @@
+Bien sûr! Je vais recréer le programme HTML/CSS/JavaScript complet, en intégrant
+votre photo de profil dans la section d'accueil. J'ai mis à jour le chemin de
+l'image dans la section
+<section id="home">
+
+
+  <!DOCTYPE html>
+  <html lang="fr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Momtez Besbes - Portfolio</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        :root {
+          --primary-dark: #2c2c2c;
+          --primary-brown: #8b4b3b;
+          --secondary-beige: #d4b896;
+          --light-cream: #f5f1eb;
+          --soft-pink: #f7f0ed;
+          --terracotta: #b85c4d;
+          --text-dark: #2c2c2c;
+          --text-light: #6b6b6b;
+          --white: #ffffff;
+        }
+
+        html {
+          scroll-behavior: smooth;
+        }
+
+        body {
+          font-family: "Georgia", serif;
+          line-height: 1.6;
+          color: var(--text-dark);
+          background: var(--light-cream);
+          min-height: 100vh;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+          background: rgba(245, 241, 235, 0.95);
+          backdrop-filter: blur(10px);
+          padding: 1rem 0;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 20px rgba(139, 75, 59, 0.15);
+        }
+
+        nav .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .logo {
+          font-size: 1.8rem;
+          font-weight: bold;
+          background: var(--primary-brown);
+          color: white;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(139, 75, 59, 0.3);
+          cursor: pointer;
+        }
+
+        .logo:hover {
+          transform: scale(1.1);
+          background: var(--terracotta);
+          box-shadow: 0 6px 20px rgba(139, 75, 59, 0.4);
+        }
+
+        nav ul {
+          display: flex;
+          list-style: none;
+          gap: 2rem;
+        }
+
+        nav span {
+          color: var(--text-dark);
+          font-weight: 500;
+          transition: all 0.3s ease;
+          padding: 0.5rem 1rem;
+          border-radius: 25px;
+          cursor: pointer;
+          display: inline-block;
+          position: relative;
+        }
+
+        nav span:hover,
+        nav span.active {
+          color: var(--primary-brown);
+          background: rgba(139, 75, 59, 0.1);
+        }
+
+        nav span.active {
+          font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          background: linear-gradient(
+            135deg,
+            var(--soft-pink) 0%,
+            var(--light-cream) 100%
+          );
+          position: relative;
+          overflow: hidden;
+          padding-top: 80px;
+        }
+
+        .hero::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 60%;
+          height: 100%;
+          background: var(--terracotta);
+          opacity: 0.05;
+          transform: skewX(-15deg);
+          transform-origin: top;
+        }
+
+        .hero-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+          z-index: 2;
+          position: relative;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+        }
+
+        .hero-text h1 {
+          font-size: 3.5rem;
+          margin-bottom: 1rem;
+          color: var(--primary-brown);
+          font-weight: bold;
+          line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+          font-size: 1.5rem;
+          color: var(--terracotta);
+          margin-bottom: 0.5rem;
+          font-weight: 400;
+        }
+
+        .hero-text .description {
+          font-size: 1.1rem;
+          color: var(--text-light);
+          margin-bottom: 2rem;
+          line-height: 1.8;
+        }
+
+        .hero-image {
+          text-align: center;
+          position: relative;
+        }
+
+        .hero-image img {
+          width: 350px;
+          height: 450px;
+          object-fit: cover;
+          border-radius: 20px;
+          box-shadow: 0 20px 40px rgba(139, 75, 59, 0.25);
+          transition: transform 0.3s ease;
+          border: 4px solid var(--white);
+        }
+
+        .hero-image img:hover {
+          transform: scale(1.05);
+        }
+
+        .cta-button {
+          display: inline-block;
+          background: var(--primary-brown);
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 50px;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          box-shadow: 0 10px 30px rgba(139, 75, 59, 0.3);
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+        }
+
+        .cta-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 15px 40px rgba(139, 75, 59, 0.4);
+          background: var(--terracotta);
+        }
+
+        /* Sections */
+        section {
+          padding: 5rem 0;
+          background: var(--white);
+          margin-top: 2rem;
+        }
+
+        section:nth-child(even) {
+          background: var(--soft-pink);
+        }
+
+        h2 {
+          font-size: 2.5rem;
+          text-align: center;
+          margin-bottom: 3rem;
+          color: var(--primary-brown);
+          position: relative;
+          padding-bottom: 1rem;
+        }
+
+        h2::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 3px;
+          background: var(--terracotta);
+          border-radius: 2px;
+        }
+
+        /* About */
+        .about-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 3rem;
+          align-items: center;
+        }
+
+        .about-left {
+          text-align: center;
+        }
+
+        .profile-image {
+          width: 100%;
+          max-width: 350px;
+          height: 450px;
+          border-radius: 20px;
+          object-fit: cover;
+          border: 4px solid var(--primary-brown);
+          box-shadow: 0 20px 40px rgba(139, 75, 59, 0.25);
+          margin-bottom: 2rem;
+        }
+
+        .about-text {
+          font-size: 1.1rem;
+          line-height: 1.8;
+          color: var(--text-light);
+          margin-bottom: 2rem;
+        }
+
+        .about-info {
+          background: var(--primary-brown);
+          color: white;
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: 0 15px 35px rgba(139, 75, 59, 0.25);
+        }
+
+        .info-item {
+          margin-bottom: 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+          position: relative;
+          padding: 2rem 0;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .timeline-item {
+          margin-bottom: 3rem;
+        }
+
+        .timeline-content {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(139, 75, 59, 0.1);
+          border-left: 4px solid var(--terracotta);
+          transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(139, 75, 59, 0.15);
+        }
+
+        .timeline-date {
+          background: var(--primary-brown);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          margin-bottom: 1rem;
+          display: inline-block;
+        }
+
+        .timeline-content h3 {
+          color: var(--primary-brown);
+          margin-bottom: 0.5rem;
+          font-size: 1.4rem;
+        }
+
+        .timeline-content p {
+          color: var(--text-light);
+          margin-bottom: 0.5rem;
+        }
+
+        /* Image placeholder zones */
+        .image-placeholder {
+          border: 2px dashed var(--terracotta);
+          border-radius: 10px;
+          padding: 2rem;
+          text-align: center;
+          background: var(--soft-pink);
+          margin-top: 1rem;
+          min-height: 200px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .image-placeholder-icon {
+          font-size: 3rem;
+          color: var(--terracotta);
+          margin-bottom: 1rem;
+        }
+
+        .image-placeholder-text {
+          color: var(--primary-brown);
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+
+        .image-placeholder-hint {
+          color: var(--text-light);
+          font-size: 0.9rem;
+        }
+
+        /* Pour remplacer le placeholder par une vraie image */
+        .experience-image {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          margin-top: 1rem;
+          box-shadow: 0 5px 15px rgba(139, 75, 59, 0.2);
+        }
+
+        /* Projects */
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 2rem;
+        }
+
+        .project-card {
+          background: var(--white);
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(139, 75, 59, 0.1);
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+        }
+
+        .project-card:hover {
+          transform: translateY(-10px);
+          border-color: var(--terracotta);
+        }
+
+        .project-image {
+          width: 100%;
+          height: 200px;
+          background: linear-gradient(
+            135deg,
+            var(--secondary-beige),
+            var(--terracotta)
+          );
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 3rem;
+          color: white;
+        }
+
+        .project-content {
+          padding: 1.5rem;
+        }
+
+        .project-title {
+          color: var(--primary-brown);
+          font-size: 1.3rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+          color: var(--text-light);
+          margin-bottom: 1rem;
+        }
+
+        .project-tech {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .tech-tag {
+          background: var(--primary-brown);
+          color: white;
+          padding: 0.3rem 0.8rem;
+          border-radius: 15px;
+          font-size: 0.8rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 2rem;
+        }
+
+        .skill-category {
+          background: var(--white);
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(139, 75, 59, 0.1);
+          border-top: 4px solid var(--terracotta);
+          transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+          transform: translateY(-10px);
+        }
+
+        .skill-category h3 {
+          color: var(--primary-brown);
+          margin-bottom: 1.5rem;
+          font-size: 1.3rem;
+        }
+
+        .skill-list {
+          list-style: none;
+        }
+
+        .skill-list li {
+          padding: 0.5rem 0;
+          border-bottom: 1px solid var(--light-cream);
+          transition: color 0.3s ease;
+        }
+
+        .skill-list li:hover {
+          color: var(--terracotta);
+        }
+
+        .skill-list li:last-child {
+          border-bottom: none;
+        }
+
+        /* Contact */
+        .contact-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .contact-item {
+          background: var(--primary-brown);
+          color: white;
+          padding: 2rem;
+          border-radius: 15px;
+          transition: all 0.3s ease;
+          border: 2px solid transparent;
+          text-decoration: none;
+          display: block;
+        }
+
+        .contact-item:hover {
+          transform: translateY(-10px);
+          border-color: var(--secondary-beige);
+          box-shadow: 0 15px 35px rgba(139, 75, 59, 0.4);
+          background: var(--terracotta);
+          color: white;
+        }
+
+        .contact-icon {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .contact-item h3 {
+          margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+          background: var(--primary-brown);
+          color: white;
+          text-align: center;
+          padding: 2rem 0;
+        }
+
+        /* Instructions banner */
+        .instructions-banner {
+          background: linear-gradient(
+            135deg,
+            var(--terracotta),
+            var(--primary-brown)
+          );
+          color: white;
+          padding: 1rem;
+          text-align: center;
+          font-size: 0.9rem;
+          border-radius: 10px;
+          margin-bottom: 2rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .hero-content {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+          }
+
+          .hero-text h1 {
+            font-size: 2.5rem;
+          }
+
+          .hero-image img {
+            width: 280px;
+            height: 360px;
+          }
+
+          nav ul {
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+
+          nav span {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.9rem;
+          }
+
+          .about-content {
+            grid-template-columns: 1fr;
+          }
+
+          .projects-grid,
+          .skills-grid {
+            grid-template-columns: 1fr;
+          }
+
+          h2 {
+            font-size: 2rem;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <nav>
+        <div class="container">
+          <div class="logo" onclick="scrollToSection('home')">MB</div>
+          <ul>
+            <li><span onclick="scrollToSection('home')">Accueil</span></li>
+            <li><span onclick="scrollToSection('about')">À propos</span></li>
+            <li>
+              <span onclick="scrollToSection('experience')">Expérience</span>
+            </li>
+            <li><span onclick="scrollToSection('projects')">Projets</span></li>
+            <li>
+              <span onclick="scrollToSection('skills')">Compétences</span>
+            </li>
+            <li><span onclick="scrollToSection('contact')">Contact</span></li>
+          </ul>
+        </div>
+      </nav>
+
+      <section id="home" class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Momtez Besbes</h1>
+            <p class="subtitle">Élève Ingénieur en Design Industriel Durable</p>
+            <p class="description">
+              Étudiant à l'EPF en 5ème année, passionné par l'innovation et la
+              conception mécanique. À la recherche d'un stage de fin d'études
+              pour appliquer mes connaissances et développer de nouvelles
+              compétences dans le domaine du design industriel durable.
+            </p>
+            <button class="cta-button" onclick="scrollToSection('contact')">
+              Me Contacter
+            </button>
+          </div>
+          <div class="hero-image">
+            <img src="public\aiease_1758887139920.jpg" alt="Momtez Besbes" />
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <h2>À Propos</h2>
+          <div class="about-content">
+            <div class="about-left">
+              <div class="about-text">
+                <p>
+                  Je suis Momtez Besbes, étudiant à l'EPF en 5ème année avec
+                  un majeur en Design Industriel Durable. Passionné par
+                  l'innovation et la conception mécanique, je cherche un stage
+                  de fin d'études pour appliquer mes connaissances et développer
+                  de nouvelles compétences.
+                </p>
+                <p>
+                  Organisé, dynamique et ponctuel, je suis prêt à relever de
+                  nouveaux défis et à contribuer efficacement aux missions qui
+                  me seront confiées. Mon expérience en bureau d'études et ma
+                  maîtrise des outils de CAO me permettent d'apporter une valeur
+                  ajoutée immédiate.
+                </p>
+              </div>
+            </div>
+            <div class="about-info">
+              <div class="info-item">
+                <strong>Localisation:</strong> Troyes (10000)
+              </div>
+              <div class="info-item"><strong>Né le:</strong> 23/01/2002</div>
+              <div class="info-item">
+                <strong>Téléphone:</strong> 07 53 13 73 62
+              </div>
+              <div class="info-item">
+                <strong>Email:</strong> momtezbesbes@gmail.com
+              </div>
+              <div class="info-item">
+                <strong>Permis:</strong> Permis de conduire
+              </div>
+              <div class="info-item">
+                <strong>Loisirs:</strong> Football, Camping
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <h2>Expérience Professionnelle</h2>
+
+          <div class="instructions-banner">
+           
+          </div>
+
+          
+                <div class="timeline-date">Janvier 2024 - Janvier 2025</div>
+                <h3>Concepteur BAPM</h3>
+                <p><strong>Ben Ayed Project Management, Sfax</strong></p>
+                <p>
+                  Concepteur au bureau d'étude. Étude et conception des machines
+                  de production du bois. Utilisation de SolidEdge et
+                  AutoCAD.
+
+
+                  
+                </p>
+
+                <div class="image-placeholder">
+                  
+                    <img src="public/Doucet.png" class="experience-image" alt="Machine de production" />
+                    <img src="public/proiox_services_cover.jpeg" class="experience-image" alt="Machine de production" />
+                  </div>
+                  <div class="image-placeholder-text">
+                  <div class="image-placeholder-hint">
+                  (Machines, plans CAO, projets SolidEdge)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-date">Juillet 2023 - Décembre 2023</div>
+                <h3>Concepteur DI Sopal</h3>
+                <p><strong>Sopal Sfax</strong></p>
+                <p>
+                  Concepteur au bureau d'étude. Développement industrialisation
+                  conception , etude et realisatioin d'outillage , des matrices d'estempage ,
+                   modification et amelioration des machines d'usinage en utilisant Catia V5/V6.
+
+                   
+                </p>
+
+                <div class="image-placeholder">
+                 
+                  
+                    <span><img src="public/new-logo-sopal.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+                  </div>
+                  <div class="image-placeholder-text">
+                  <div class="image-placeholder-hint">
+                    (Gestion des Projets, conception avec CATIA V5, modélisations 3D)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <div class="timeline-date">Février 2023 - Juin 2023</div>
+                <h3>Stagiaire SOPAL TEC</h3>
+                <p><strong>Sopal TEC Sfax</strong></p>
+                <p>
+                  Projet fin d'étude: Développement d'une machine d'emballage
+                  automatique des robinets.
+                </p>
+
+                <div class="image-placeholder">
+                    <span><img src="public/sopaltec_cover.jpeg" style="width:100%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+                  </div>
+                  <div class="image-placeholder-text">
+                  <div class="image-placeholder-hint">
+                    Machine d'emballage, prototypes, tests
+                  </div>
+                </div>
+              </div>
+            </div>
+
+      <section id="projects">
+        <div class="container">
+          <h2>Mes Projets</h2>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image">
+                <span><img src="public/image.jpg.png" style="width:100%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+                </div></span>
+              </div>
+              <div class="project-content">
+                <div class="project-title">Machine d'emballage automatique</div>
+                <div class="project-description">
+                  Développement d'une machine d'emballage automatique des
+                  robinets chez SOPAL TEC. Projet de fin d'études intégrant
+                  conception mécanique et automatisation.
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">CAO</span>
+                  <span class="tech-tag">Automatisation</span>
+                  <span class="tech-tag">SolidWorks</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <span><img src="public/Banc d'essai.jpg" style="width:-50%;height:95%;object-fit:cover;" alt="Machine d'emballage" />
+                <span><img src="public/Banc d'essai 2.png" style="width:40%;height:95%;object-fit:cover;" alt="Machine d'emballage" />
+                <span>⚙️</span>
+              </div>
+              <div class="project-content">
+                <div class="project-title">Banc d'essai purgeur d'air</div>
+                <div class="project-description">
+                  Conception et réalisation d'un banc d'essai de purgeur d'air
+                  automatique. Projet alliant conception mécanique et
+                  instrumentation.
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Conception</span>
+                  <span class="tech-tag">Tests</span>
+                  <span class="tech-tag">Catia</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+              <img src="public/machine-bois1.jpg" style="width:70%;height:90%;object-fit:cover;" alt="Machine d'emballage" />
+              </div>
+              <div class="project-content">
+                <div class="project-title">Machines de production du bois</div>
+                <div class="project-description">
+                  Étude et conception d'une presse hydrolique pour le collage du 
+                  bois chez Ben Ayed Project Management. Focus sur
+                  l'efficacité et la durabilité.
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">SolidEdge</span>
+                  <span class="tech-tag">AutoCAD</span>
+                  <span class="tech-tag">Production</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <img src="public/Robot tout terrain.jpg" style="width:25%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+                <img src="public/Robot suiveur de ligne.jpg" style="width:40%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+              </div>
+              <div class="project-content">
+                <div class="project-title">Robotique</div>
+                <div class="project-description">
+                  Conception, réalisation et programmation des robots tout terrain et robot suiveur de ligne 
+                  au Club Robotique. Projet intégrant programmation Arduino et
+                  assemblage électronique.
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Arduino</span>
+                  <span class="tech-tag">Robotique</span>
+                  <span class="tech-tag">Électronique</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+                <img src="public/draisienne.jpeg" style="width:50%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+                <img src="public/Draisienne2.jpeg" style="width:50%;height:100%;object-fit:cover;" alt="Machine d'emballage" />
+              </div>
+              <div class="project-content">
+                <div class="project-title">Maquette Draisinne</div>
+                <div class="project-description">
+                  Processus de création d'un maquette de draisienne et de sa liaison pivot échelle 1:1
+Maquettage
+Dans le cadre de ce projet, j’ai appris les bases de la réalisation de maquettes fonctionnelles.
+ J’ai conçu et fabriqué une maquette de draisienne en carton, ce qui m’a permis de mieux comprendre
+  les proportions, les volumes, ainsi que les contraintes liées à ce type de véhicule. En parallèle,
+   j’ai également réalisé une maquette de la liaison pivot à l’échelle 1:1. Pour cette partie,
+    le matériau était libre (hors carton), ce qui m’a permis d’explorer d’autres solutions 
+    constructives adaptées à un prototype plus réaliste et robuste.
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Fabrication</span>
+                  <span class="tech-tag">Bois</span>
+                  <span class="tech-tag">maquettage</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image">
+              <img src="public/Salon Moderne Momtez_BESBES.png" style="width:75%;height:90%;object-fit:cover;" alt="Machine d'emballage" />
+              </div>
+              <div class="project-content">
+                <div class="project-title">Simulation d'ambiance d'un salon de séjour et mise en valeur d'une lampe de chevet</div>
+                <div class="project-description">
+                  Projets Scènes 3D sous Blender
+                  Projet de scénographie virtuelle sous Blender :
+                   travail sur la lumière, l’environnement et la narration visuelle. 
+                   Une expérience qui m’a poussé à m’intéresser 
+                   davantage à l’animation 3D et aux univers immersifs.
+                </div>
+                <div class="project-tech">
+                  <span class="tech-tag">Catia V6</span>
+                  <span class="tech-tag">Industrialisation</span>
+                  <span class="tech-tag">Optimisation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <h2>Compétences</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Logiciels de CAO</h3>
+              <ul class="skill-list">
+                <li>AutoCAD</li>
+                <li>SolidWorks</li>
+                <li>SolidEdge</li>
+                <li>Catia V5/V6</li>
+                <li>Rhino</li>
+                <li>Blender</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h3>Langues</h3>
+              <ul class="skill-list">
+                <li>Arabe (Langue maternelle)</li>
+                <li>Français (Courant, C1)</li>
+                <li>Anglais (Intermédiaire, B2)</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h3>Compétences Techniques</h3>
+              <ul class="skill-list">
+                <li>Design Industriel Durable</li>
+                <li>Conception Mécanique</li>
+                <li>Dessin Technique</li>
+                <li>Calculs RDM</li>
+                <li>Gestion de Projet</li>
+                <li>Analyse du Cycle de Vie (ACV)</li>
+              </ul>
+            </div>
+
+            <div class="skill-category">
+              <h3>Soft Skills</h3>
+              <ul class="skill-list">
+                <li>Esprit d'équipe</li>
+                <li>Rigueur et Organisation</li>
+                <li>Dynamisme</li>
+                <li>Autonomie</li>
+                <li>Capacité d'adaptation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <h2>Me Contacter</h2>
+          <div class="contact-grid">
+            <a href="tel:0753137362" class="contact-item">
+              <div class="contact-icon">📞</div>
+              <h3>Téléphone</h3>
+              <p>07 53 13 73 62</p>
+            </a>
+            <a href="mailto:momtezbesbes@gmail.com" class="contact-item">
+              
+                <div class="contact-icon">📄</div>
+                <h3>CV</h3>Télécharger mon CV
+                <a href="nodebox/public/Documents/CV_Momtez_Besbes.pdf" download="CV_Momtez_Besbes.pdf" 
+                   style="color: white; text-decoration: underline;">
+                  
+                </a>
+              </div>
+              
+              <div class="contact-item">
+              <h3>Email</h3>
+              <p>momtezbesbes@gmail.com</p>
+              <div class="contact-icon">  ✉️  </div>
+            </a>
+
+            <a href="#" class="contact-item">
+              <div class="contact-icon"><img src="public/LinkedIn_icon_circle.svg.png" style="width:30%;height:20%;object-fit:cover;" alt="Machine d'emballage" /></div>
+              <h3>    LinkedIn   </h3>
+              <p>linkedin.com/in/momtez-besbes-08a203255</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="container">
+          <p>&copy; 2025 Momtez Besbes. Tous droits réservés.</p>
+        </div>
+      </footer>
+
+      <script>
+        // Fonction pour le défilement fluide vers les sections
+        function scrollToSection(id) {
+          const section = document.getElementById(id);
+          if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+
+        // Fonction pour mettre à jour la classe "active" de la navigation
+        const sections = document.querySelectorAll("section");
+        const navSpans = document.querySelectorAll("nav span");
+
+        window.addEventListener("scroll", () => {
+          let current = "";
+          sections.forEach((section) => {
+            // Utilise section.getBoundingClientRect().top pour une détection plus précise
+            const rect = section.getBoundingClientRect();
+            const offset = 150; // Ajustement pour la barre de navigation
+            if (rect.top <= offset && rect.bottom >= offset) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navSpans.forEach((span) => {
+            span.classList.remove("active");
+            // Trouve le span correspondant à la section actuelle
+            if (span.getAttribute("onclick").includes(`'${current}'`)) {
+              span.classList.add("active");
+            }
+          });
+
+          // Cas spécial pour l'accueil/le haut de page
+          if (window.scrollY < 200) {
+            navSpans[0].classList.add("active");
+          }
+        });
+
+        // Initialiser la classe active au chargement
+        document.addEventListener("DOMContentLoaded", () => {
+          navSpans[0].classList.add("active"); // Activer "Accueil" par défaut
+        });
+      </script>
+    </body>
+  </html>
+</section>
